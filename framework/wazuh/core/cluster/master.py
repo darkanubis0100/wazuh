@@ -25,7 +25,7 @@ from wazuh.core.common import DECIMALS_DATE_FORMAT
 from wazuh.core.indexer.base import BaseIndex
 from wazuh.core.utils import get_utc_now
 from wazuh.core.wdb import AsyncWazuhDBConnection
-from wazuh.framework.wazuh.core.indexer.disconnected_agents import DisconnectedAgentGroupSyncTask
+from wazuh.core.indexer.disconnected_agents import DisconnectedAgentGroupSyncTask
 
 DEFAULT_DATE: str = 'n/a'
 

@@ -1135,7 +1135,7 @@ async def disconnected_agent_group_sync(agent_list: list = None, group_list: lis
         If agent does not exist.
     """
     logger = logging.getLogger('wazuh')
-    
+
     result = AffectedItemsWazuhResult(
         all_msg='Group synchronization completed for all disconnected agents',
         some_msg='Group synchronization completed for some disconnected agents',
@@ -1149,7 +1149,8 @@ async def disconnected_agent_group_sync(agent_list: list = None, group_list: lis
 
     # Validate required parameters
     if not group_list or external_gte is None:
-        raise WazuhError(1001, extra_message="Missing required parameters: group_list, external_gte")
+        raise WazuhError(1001,
+                         extra_message="Missing required parameters: group_list, external_gte")
 
     system_agents = get_agents_info()
 
@@ -1190,7 +1191,8 @@ async def disconnected_agent_group_sync(agent_list: list = None, group_list: lis
             logger.error(f"Error synchronizing agent {agent_id}: {str(e)}")
             result.add_failed_item(id_=agent_id, error=e)
         except Exception as e:
-            logger.error(f"Unexpected error synchronizing agent {agent_id}: {str(e)}", exc_info=True)
+            logger.error(f"Unexpected error synchronizing agent {agent_id}: {str(e)}",
+                         exc_info=True)
             result.add_failed_item(
                 id_=agent_id,
                 error=WazuhInternalError(1000, extra_message=str(e))
